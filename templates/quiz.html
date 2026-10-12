@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}MBTI 테스트{% endblock %}
+
+{% block content %}
+<section class="quiz-section">
+    <div class="container">
+        <h1>MBTI 성격유형 테스트</h1>
+        <p class="quiz-desc">가장 가까운 답변을 선택해주세요. (총 {{ questions|length }}문항)</p>
+
+        <form action="/quiz/result" method="post" id="quiz-form">
+            {% for q in questions %}
+            <div class="question-card">
+                <h3>Q{{ q.id }}. {{ q.text }}</h3>
+                <div class="options">
+                    {% for opt in q.options %}
+                    <label class="option">
+                        <input type="radio" name="q{{ q.id }}" value="{{ opt.value }}" required>
+                        <span>{{ opt.label }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="submit-area">
+                <button type="submit" class="btn btn-primary">결과 보기</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

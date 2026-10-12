@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}결과: {{ mbti_type }}{% endblock %}
+
+{% block content %}
+<section class="result-section">
+    <div class="container">
+        <div class="result-card">
+            <p class="result-label">당신의 MBTI 유형은</p>
+            <h1 class="result-type">{{ mbti_type }}</h1>
+            <a href="/types/{{ mbti_type }}" class="btn btn-primary">상세 설명 보기</a>
+            <a href="/quiz/" class="btn btn-secondary">다시 테스트하기</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ mbti_type }} - {{ type_info.name }}{% endblock %}
+
+{% block content %}
+<section class="type-detail-section">
+    <div class="container">
+        <div class="type-header">
+            <h1>{{ mbti_type }}</h1>
+            <p class="type-name">{{ type_info.name }} · {{ type_info.title }}</p>
+        </div>
+
+        <div class="type-content">
+            <div class="card">
+                <h2>설명</h2>
+                <p>{{ type_info.description }}</p>
+            </div>
+
+            <div class="card">
+                <h2>주요 특징</h2>
+                <div class="tags">
+                    {% for trait in type_info.traits %}
+                    <span class="tag">{{ trait }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h2>강점</h2>
+                    <ul>
+                        {% for s in type_info.strengths %}
+                        <li>{{ s }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="card">
+                    <h2>약점</h2>
+                    <ul>
+                        {% for w in type_info.weaknesses %}
+                        <li>{{ w }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>추천 직업</h2>
+                <div class="tags">
+                    {% for c in type_info.careers %}
+                    <span class="tag tag-career">{{ c }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="/types/" class="btn btn-secondary">← 유형 목록으로</a>
+            <a href="/quiz/" class="btn btn-primary">테스트 하기</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
